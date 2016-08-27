@@ -104,7 +104,6 @@
                         <li><a href="<?php echo base_url('mall_order_refund/grid');?>">退款审核</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url('mall_keyword/grid');?>">热门搜索</a></li>
             </ul>
         </li>
         <li>
