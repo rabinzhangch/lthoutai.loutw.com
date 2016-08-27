@@ -9,7 +9,7 @@ class User extends CS_Controller
     
     public function grid($pg = 1)
     {
-    	$page_num = 20;
+        $page_num = 20;
         $num = ($pg-1)*$page_num;
         $config['first_url'] = base_url('user/grid').$this->pageGetParam($this->input->get());
         $config['suffix'] = $this->pageGetParam($this->input->get());
@@ -165,31 +165,6 @@ class User extends CS_Controller
             }
         }
         exit;
-    }
-
-    public function delete($uid)
-    {
-        $this->db->trans_start();
-        $is_delete = $this->user->deleteById($uid);
-        $this->db->trans_complete();
-        
-        if (!$is_delete) {
-            $this->error('user/grid', '', '删除失败！');
-        }
-        $this->success('user/grid', '', '删除成功！');
-    }
-    
-     /**
-     * 重置密码
-     * @param unknown $uid
-     */
-    public function restPassword($uid){
-    	
-    	$result = $this->user->updatePasswordByUid($uid);
-    	if (!$result) {
-    		$this->error('user/grid',array('username'=>$uid), '重置失败！');
-    	}
-    	$this->success('user/grid', '', '重置成功！');
     }
     
     public function validate()

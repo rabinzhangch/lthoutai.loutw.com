@@ -38,7 +38,7 @@ class User_model extends CI_Model
             $this->db->where('parent_id', $params['parent_id']);
         }
         if (!empty($params['flag'])) {
-        	$this->db->where('flag', $params['flag']);
+            $this->db->where('flag', $params['flag']);
         }
         if (!empty($params['start_time'])) {
             $this->db->where('created_at >=',$params['start_time']);
@@ -65,13 +65,13 @@ class User_model extends CI_Model
             $this->db->where('parent_id', $params['parent_id']);
         }
         if (!empty($params['flag'])) {
-        	$this->db->where('flag',$params['flag']);
+            $this->db->where('flag',$params['flag']);
         }
         if (!empty($params['start_time'])) {
-        	$this->db->where('created_at >=',$params['start_time']);
+            $this->db->where('created_at >=',$params['start_time']);
         }
         if (!empty($params['end_time'])) {
-        	$this->db->where('created_at <=',$params['end_time']);
+            $this->db->where('created_at <=',$params['end_time']);
         }
         $this->db->order_by('user.uid', 'DESC');
         $this->db->limit($page_num, $num);
@@ -82,16 +82,16 @@ class User_model extends CI_Model
     {
         $data = array(
             'alias_name'   => !empty($postData['alias_name']) ? $postData['alias_name'] : '',
-            'phone'         => $postData['phone'],
-            'email'         => !empty($postData['email']) ? $postData['email'] : '',
+            'phone'        => $postData['phone'],
+            'email'        => !empty($postData['email']) ? $postData['email'] : '',
             'password'     => md5(sha1($postData['password'])),
-            'sex'           => $postData['sex'],
+            'sex'          => $postData['sex'],
             'user_money'   => !empty($postData['user_money']) ? $postData['user_money'] : 0,
             'frozen_money' => !empty($postData['frozen_money']) ? $postData['frozen_money'] : 0,
             'pay_points'   => !empty($postData['pay_points']) ? $postData['pay_points'] : 0,
             'parent_id'    => !empty($postData['parent_id']) ? $postData['parent_id'] : 0,
-            'flag'          => $postData['flag'],
-            'sms'           => !empty($postData['sms']) ? $postData['sms'] : 1,
+            'flag'         => $postData['flag'],
+            'sms'          => !empty($postData['sms']) ? $postData['sms'] : 1,
             'created_at'   => date('Y-m-d H:i:s')
         );
         if (!empty($params['birthday'])) {
@@ -105,15 +105,15 @@ class User_model extends CI_Model
     {
         $data = array(
             'alias_name'   => !empty($postData['alias_name']) ? $postData['alias_name'] : '',
-            'phone'         => $postData['phone'],
-            'email'         => !empty($postData['email']) ? $postData['email'] : '',
-            'sex'           => $postData['sex'],
+            'phone'        => $postData['phone'],
+            'email'        => !empty($postData['email']) ? $postData['email'] : '',
+            'sex'          => $postData['sex'],
             'user_money'   => !empty($postData['user_money']) ? $postData['user_money'] : 0,
             'frozen_money' => !empty($postData['frozen_money']) ? $postData['frozen_money'] : 0,
             'pay_points'   => !empty($postData['pay_points']) ? $postData['pay_points'] : 0,
             'parent_id'    => !empty($postData['parent_id']) ? $postData['parent_id'] : 0,
-            'flag'          => $postData['flag'],
-            'sms'           => !empty($postData['sms']) ? $postData['sms'] : 1,
+            'flag'         => $postData['flag'],
+            'sms'          => !empty($postData['sms']) ? $postData['sms'] : 1,
         );
         if (!empty($params['password'])) {
             $data['password'] = md5(sha1($postData['password']));
@@ -143,32 +143,12 @@ class User_model extends CI_Model
      */
     public function updateUserAcount($uid, $account=array())
     {
-    	$data = array();
-    	if (!empty($account['amount_carry'])) {
-    		$this->db->set('user_money', 'user_money+'.$account['amount_carry'], FALSE);
-    	}
-    	$this->db->where('uid', $uid);
-    	return $this->db->update($this->table, $data);
-    }
-    
-    /**
-     * 更新密码
-     * @param unknown $uid
-     */
-    public function updatePasswordByUid($uid){
-    	
-    	$data['password'] = sha1(base64_encode('123456'));
-    	return $this->db->update($this->table, $data, array('uid'=>$uid));
-    }
-    
-    /**
-     * 删除uid
-     * @param unknown $uid
-     */
-    public function deleteById($uid){
-    	
-    	$this->db->where('uid',$uid);
-    	return $this->db->delete($this->table);
+        $data = array();
+        if (!empty($account['amount_carry'])) {
+            $this->db->set('user_money', 'user_money+'.$account['amount_carry'], FALSE);
+        }
+        $this->db->where('uid', $uid);
+        return $this->db->update($this->table, $data);
     }
      
     /**

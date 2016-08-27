@@ -32,7 +32,7 @@
                                 <div class="control-group">
                                     <label class="control-label">手机号码</label>
                                     <div class="controls">
-                                        <input type="text" name="phone" value="<?php echo $this->input->get('phone');?>" placeholder="请输入用户昵称" class="m-wrap span12">
+                                        <input type="text" name="phone" value="<?php echo $this->input->get('phone');?>" placeholder="请输入手机号码" class="m-wrap span12">
                                     </div>
                                 </div>
                             </div>
@@ -118,9 +118,8 @@
                                     <th>邮箱</th>
                                     <th>可用金额</th>
                                     <th>冻结金额</th>
-                                    <th>消费积分</th>
+                                    <th>积分</th>
                                     <th>父级序号</th>
-                                    <th>密码</th>
                                     <th>注册时间</th>
                                     <th>状态</th>
                                     <th>操作</th>
@@ -138,7 +137,6 @@
                                     <td><?php echo $item->frozen_money;?></td>
                                     <td><?php echo $item->pay_points;?></td>
                                     <td><?php echo $item->parent_id;?></td>
-                                    <td><a class="btn mini green" href="<?php echo base_url('user/restPassword/'.$item->uid); ?>" onclick="return confirm('确定重置密码吗？')">重置</a></td>
                                     <td><?php echo $item->created_at;?></td>
                                     <td>
                                         <a href="javascript:;" class="modify-user-uid glyphicons no-js <?php if ($item->flag == 1):?>ok_2<?php else :?>remove_2<?php endif;?>" data-uid="<?php echo $item->uid;?>" data-flag="<?php echo $item->flag ?>">
@@ -150,8 +148,6 @@
                                         <a class="btn mini green" href="<?php echo base_url('mall_address/grid/'.$item->uid); ?>"> 收货地址</a><p></p>
                                         <a class="btn mini green" href="<?php echo base_url('account_log/grid?uid='.$item->uid); ?>">账户收支</a>
                                         <a class="btn mini green" href="<?php echo base_url('user_log/grid?uid='.$item->uid); ?>">日志</a><p></p>
-                                        <a class="btn mini green" href="<?php echo base_url('mall_enshrine/grid?uid='.$item->uid); ?>">收藏</a>
-                                        <a class="btn mini green" href="<?php echo base_url('mall_cart_goods/grid?uid='.$item->uid); ?>">购物车</a>
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
