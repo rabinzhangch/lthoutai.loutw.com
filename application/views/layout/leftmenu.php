@@ -74,28 +74,27 @@
         <li>
             <a href="javascript:;">
                 <i class="icon-barcode"></i>
-                <span class="title">妙网商城</span>
+                <span class="title">景区管理</span>
                 <span class="selected "></span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li>
                     <a href="javascript:;">
-                        <span class="title">商品管理</span>
+                        <span class="title">景区产品</span>
                         <span class="selected"></span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="<?php echo base_url('mall_goods_base/grid');?>">商品列表</a></li>
-                        <li><a href="<?php echo base_url('mall_category/grid');?>">类别管理</a></li>
-                        <li><a href="<?php echo base_url('mall_attribute_set/grid');?>">商品类型</a></li>
-                        <li><a href="<?php echo base_url('mall_brand/grid');?>">品牌管理</a></li>
-                        <li><a href="<?php echo base_url('mall_freight/grid');?>">运费模板</a></li>
+                        <li><a href="<?php echo base_url('mall_goods_base/grid');?>">景区列表</a></li>
+                        <li><a href="<?php echo base_url('mall_category/grid');?>">门票列表</a></li>
+                        <li><a href="<?php echo base_url('mall_attribute_set/grid');?>">旅游主题</a></li>
+                        <li><a href="<?php echo base_url('mall_brand/grid');?>">接口来源</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:;">
-                        <span class="title">商品订单</span>
+                        <span class="title">景区订单</span>
                         <span class="selected "></span>
                         <span class="arrow"></span>
                     </a>
@@ -103,18 +102,6 @@
                         <li><a href="<?php echo base_url('mall_order_base/grid');?>">订单管理</a></li>
                         <li><a href="<?php echo base_url('mall_order_reviews/grid');?>">评价管理</a></li>
                         <li><a href="<?php echo base_url('mall_order_refund/grid');?>">退款审核</a></li>
-                        <li><a href="<?php echo base_url('mall_order_barter/grid');?>">换货审核</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <span class="title">快递管理</span>
-                        <span class="selected "></span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="<?php echo base_url('deliver_base/grid'); ?>">快递公司</a></li>
-                        <li><a href="<?php echo base_url('deliver_order/grid'); ?>">快递查询</a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url('mall_keyword/grid');?>">热门搜索</a></li>
