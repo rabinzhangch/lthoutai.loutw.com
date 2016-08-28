@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    <form class="form-horizontal form-search" action="<?php echo base_url('cacheclear/grid') ?>" method="get">
+                    <form class="form-horizontal form-search" action="<?php echo base_url('cache_clear/grid') ?>" method="get">
                         <div class="row-fluid">
                             <div class="span5">
                                 <div class="control-group">
@@ -56,53 +56,44 @@
                 <div class="portlet-body flip-scroll">
                     <div class="dataTables_wrapper form-inline">
                         <div class="clearfix">
-                            <a href="<?php echo base_url('cacheclear/clearAll') ?>">
+                            <a href="<?php echo base_url('cache_clear/clearAll') ?>">
                                 <div class="btn-group">
                                     <button class="btn green"> 清理所有缓存</button>
                                 </div>
                             </a>
-                            <a href="<?php echo base_url('cacheclear/add') ?>" class="add-button-link">
+                            <a href="<?php echo base_url('cache_clear/add') ?>" class="add-button-link">
                                 <div class="btn-group">
                                     <button class="btn green"><i class="icon-plus"></i> 添加</button>
                                 </div>
                             </a>
                         </div>
                         <?php if ($all_rows > 0) :?>
-                        <table class="table table-striped table-bordered table-hover" id="sample_1">
-                            <thead class="flip-content">
-                                <tr>
-                                    <th width="20"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></th>
-                                    <th width="50">编号</th>
-                                    <th>cache名称</th>
-                                    <th>cache_id</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($page_list->result() as $item) : ?>
-                                <tr>
-                                    <td width="20"><input type="checkbox" class="checkboxes" value="1" ></td>
-                                    <td width="50"><?php echo $item->id ;?></td>
-                                    <td><?php echo $item->cache_name;?></td>
-                                    <td><?php echo $item->cache_id;?></td>
-                                    <td>
-                                        <a class="btn mini green" href="<?php echo base_url('cacheclear/clear/'.$item->id) ?>">清除缓存</a>
-                                        <a class="btn mini green" href="<?php echo base_url('cacheclear/delete/'.$item->id) ?>" onclick="return confirm('确定要删除？')"><i class="icon-trash"></i> 删除</a>
-                                    </td>
-                                </tr>
-                                <?php endforeach;?>
-                            </tbody>
-                        </table>
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <div class="dataTables_info">
-                                    <span>当前第</span><span style="color: red"><?php echo $pg_now?></span>页 
-                                    <span>共</span><span style="color: red"><?php echo $all_rows?></span>条数据
-                                    <span>每页显示20条 </span>
-                                    <?php echo $pg_link ?>
-                                </div>
-                            </div>
-                        </div>
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                <thead class="flip-content">
+                                    <tr>
+                                        <th width="20"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></th>
+                                        <th width="50">编号</th>
+                                        <th>cache名称</th>
+                                        <th>cache_id</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($page_list->result() as $item) : ?>
+                                    <tr>
+                                        <td width="20"><input type="checkbox" class="checkboxes" value="1" ></td>
+                                        <td width="50"><?php echo $item->id ;?></td>
+                                        <td><?php echo $item->cache_name;?></td>
+                                        <td><?php echo $item->cache_id;?></td>
+                                        <td>
+                                            <a class="btn mini green" href="<?php echo base_url('cache_clear/clear/'.$item->id) ?>">清除缓存</a>
+                                            <a class="btn mini green" href="<?php echo base_url('cache_clear/delete/'.$item->id) ?>" onclick="return confirm('确定要删除？')"><i class="icon-trash"></i> 删除</a>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach;?>
+                                </tbody>
+                            </table>
+                            <?php $this->load->view('layout/pagination');?>
                         <?php else: ?>
                             <div class="alert"><p>未找到数据。<p></div>
                         <?php endif ?>

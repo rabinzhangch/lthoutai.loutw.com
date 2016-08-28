@@ -1,5 +1,5 @@
 <?php
-class Cacheclear extends CS_Controller
+class Cache_clear extends CS_Controller
 {
     public function _init()
     {
@@ -9,50 +9,50 @@ class Cacheclear extends CS_Controller
    
     public function grid($pg=1)
     {
-        $pageNum = 20;
-        $getData = $this->input->get();
-        $num = ($pg-1)*$pageNum;
-        $config['first_url']   = base_url('cacheclear/grid').$this->pageGetParam($this->input->get());
+        $page_num = 20;
+        $num = ($pg-1)*$page_num;
+        $config['first_url']   = base_url('cache_clear/grid').$this->pageGetParam($this->input->get());
         $config['suffix']      = $this->pageGetParam($this->input->get());
-        $config['base_url']    = base_url('cacheclear/grid');
-        $config['total_rows']  = $this->cache_clear->total($getData);
+        $config['base_url']    = base_url('cache_clear/grid');
+        $config['total_rows']  = $this->cache_clear->total($this->input->get());
         $config['uri_segment'] = 3;
         $this->pagination->initialize($config);
         $data['pg_link']   = $this->pagination->create_links();
-        $data['page_list'] = $this->cache_clear->searchList($pageNum,$num,$getData);
+        $data['page_list'] = $this->cache_clear->page_list($page_num, $num, $this->input->get());
         $data['all_rows']  = $config['total_rows'];
         $data['pg_now']    = $pg;
-        $this->load->view('cacheclear/grid',$data);
+        $data['page_num']  = $page_num;
+        $this->load->view('cache_clear/grid',$data);
     }
     
     public function delete($id)
     {
         $is_delete = $this->cache_clear->deleteById($id);
         if ($is_delete) {
-            $this->success('cacheclear/grid', '', '删除成功！');
+            $this->success('cache_clear/grid', '', '删除成功！');
         } else {
-            $this->error('cacheclear/grid', '', '删除失败！');
+            $this->error('cache_clear/grid', '', '删除失败！');
         }
     }
     
     public function add()
     {
-        $this->load->view('cacheclear/add');
+        $this->load->view('cache_clear/add');
     }
     
     public function addPost()
     {
         $error = $this->validate();
         if(!empty($error)){
-            $this->error('cacheclear/add', '', $error);
+            $this->error('cache_clear/add', '', $error);
         }
         $this->db->trans_start();
-        $resultId = $this->cache_clear->insertCacheClear($this->input->post());
+        $resultId = $this->cache_clear->insert($this->input->post());
         $this->db->trans_complete();
         if ($resultId) {
-            $this->success('cacheclear/grid', '', '保存成功！');
+            $this->success('cache_clear/grid', '', '保存成功！');
         } else {
-            $this->error('cacheclear/add', '', '保存失败！');
+            $this->error('cache_clear/add', '', '保存失败！');
         }
     }
     
@@ -63,15 +63,15 @@ class Cacheclear extends CS_Controller
             if ($this->memcache->getData($result->row()->cache_id)) {
                 $is_secuss = $this->memcache->delete($result->row()->cache_id);
             } else {
-                $this->success('cacheclear/grid', '', '已经清理了。');
+                $this->success('cache_clear/grid', '', '已经清理了。');
             }
         } else {
             $is_secuss = false;
         }
         if ($is_secuss) {
-            $this->success('cacheclear/grid', '', '清理缓存成功！');
+            $this->success('cache_clear/grid', '', '清理缓存成功！');
         } else {
-            $this->error('cacheclear/grid', '', '清理缓存失败！');
+            $this->error('cache_clear/grid', '', '清理缓存失败！');
         }
     }
     
@@ -79,9 +79,9 @@ class Cacheclear extends CS_Controller
     {
         $is_secuss = $this->memcache->flush();
         if ($is_secuss) {
-            $this->success('cacheclear/grid', '', '清理所有缓存成功！');
+            $this->success('cache_clear/grid', '', '清理所有缓存成功！');
         } else {
-            $this->error('cacheclear/grid', '', '清理所有缓存失败！');
+            $this->error('cache_clear/grid', '', '清理所有缓存失败！');
         }
     }
     

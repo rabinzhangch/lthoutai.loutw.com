@@ -129,10 +129,10 @@
             </a>
             <ul class="sub-menu">
                 <li><a href="<?php echo base_url('advert/grid');?>">幻灯片广告管理</a></li>
-                <li><a href="<?php echo base_url('cmsblock/grid');?>">区块广告设置</a></li>
+                <li><a href="<?php echo base_url('cms_block/grid');?>">区块广告设置</a></li>
                 <li><a href="<?php echo base_url('ewm/grid');?>">二维码编辑器</a></li>
                 <li><a href="<?php echo base_url('link/grid');?>">友情链接</a></li>
-                <li><a href="<?php echo base_url('cacheclear/grid');?>">缓存管理</a></li>
+                <li><a href="<?php echo base_url('cache_clear/grid');?>">缓存管理</a></li>
             </ul>
         </li>
     </ul>

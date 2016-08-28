@@ -13,7 +13,7 @@ class Cache_clear_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
     
-    public function searchList($pageNum, $num, $getData)
+    public function page_list($pageNum, $num, $getData)
     {
         if (!empty($getData['cache_name'])) {
            $this->db->like('cache_name', $getData['cache_name']);
@@ -26,7 +26,7 @@ class Cache_clear_model extends CI_Model
         return $this->db->get($this->table);
     }
     
-    public function insertCacheClear($postData)
+    public function insert($postData)
     {
         $data = array(
             'cache_name' => $postData['cache_name'],

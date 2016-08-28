@@ -48,50 +48,41 @@
                 <div class="portlet-body flip-scroll">
                     <div class="dataTables_wrapper form-inline">
                         <?php if ($all_rows > 0) :?>
-                        <table class="table table-striped table-bordered table-hover" id="sample_1">
-                            <thead class="flip-content">
-                                <tr>
-                                    <th width="15"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></th>
-                                    <th>账户编号</th>
-                                    <th>UID</th>
-                                    <th>电话/邮箱</th>
-                                    <th>订单ID</th>
-                                    <th>账户类型</th>
-                                    <th>资金用途</th>
-                                    <th>资金类别</th>
-                                    <th>金额</th>
-                                    <th>说明</th>
-                                    <th>操作时间</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($account_log->result() as $item) : ?>
-                                <tr>
-                                    <td><input type="checkbox" class="checkboxes" value="1" ></td>
-                                    <td><?php echo $item->log_id;?></td>
-                                    <td><?php echo $item->uid;?></td>
-                                    <td><?php echo ($item->phone?$item->phone:'无'). '/' .($item->email?$item->email:'无');?></td>
-                                    <td><?php echo $item->order_id;?></td>
-                                    <td><?php echo $accountTypeArray[$item->account_type];?></td>
-                                    <td><?php echo $flowArray[$item->flow];?></td>
-                                    <td><?php echo $tradeTypeArray[$item->trade_type];?></td>
-                                    <td><?php echo $item->amount;?></td>
-                                   	<td><?php echo $item->note;?></td> 
-                                    <td><?php echo $item->created_at;?></td>
-                                </tr>
-                                <?php endforeach;?>
-                            </tbody>
-                        </table>
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <div class="dataTables_info">
-                                    <span>当前第</span><span style="color: red"><?php echo $pg_now?></span>页 
-                                    <span>共</span><span style="color: red"><?php echo $all_rows?></span>条数据
-                                    <span>每页显示20条 </span>
-                                    <?php echo $pg_link ?>
-                                </div>
-                            </div>
-                        </div>
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                <thead class="flip-content">
+                                    <tr>
+                                        <th width="15"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></th>
+                                        <th>账户编号</th>
+                                        <th>UID</th>
+                                        <th>电话/邮箱</th>
+                                        <th>订单ID</th>
+                                        <th>账户类型</th>
+                                        <th>资金用途</th>
+                                        <th>资金类别</th>
+                                        <th>金额</th>
+                                        <th>说明</th>
+                                        <th>操作时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($account_log->result() as $item) : ?>
+                                    <tr>
+                                        <td><input type="checkbox" class="checkboxes" value="1" ></td>
+                                        <td><?php echo $item->log_id;?></td>
+                                        <td><?php echo $item->uid;?></td>
+                                        <td><?php echo ($item->phone?$item->phone:'无'). '/' .($item->email?$item->email:'无');?></td>
+                                        <td><?php echo $item->order_id;?></td>
+                                        <td><?php echo $accountTypeArray[$item->account_type];?></td>
+                                        <td><?php echo $flowArray[$item->flow];?></td>
+                                        <td><?php echo $tradeTypeArray[$item->trade_type];?></td>
+                                        <td><?php echo $item->amount;?></td>
+                                        <td><?php echo $item->note;?></td>
+                                        <td><?php echo $item->created_at;?></td>
+                                    </tr>
+                                    <?php endforeach;?>
+                                </tbody>
+                            </table>
+                            <?php $this->load->view('layout/pagination');?>
                         <?php else: ?>
                             <div class="alert"><p>未找到数据。<p></div>
                         <?php endif ?>
