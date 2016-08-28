@@ -1,5 +1,5 @@
 <?php 
-class Account extends MJ_Controller
+class Account extends LT_Controller
 {
     public function _init()
     {
@@ -59,7 +59,7 @@ class Account extends MJ_Controller
         if (get_cookie('bz_session')) {
             delete_cookie('bz_session');
         }
-        $this->memcache->deleteMemcache('adminUser');
+        $this->memcache->delete('adminUser');
         $this->redirect('account/login');
     }
     

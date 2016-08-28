@@ -37,7 +37,7 @@
                                 <div class="control-group">
                                     <label class="control-label">电话号码</label>
                                     <div class="controls">
-                                        <input type="text" name="ms_tel" value="<?php echo $this->input->get('ms_tel');?>" placeholder="请输入电话号码" class="m-wrap medium">
+                                        <input type="text" name="ms_tel" value="<?php echo $this->input->get('ms_tel');?>" class="m-wrap medium" placeholder="请输入电话号码">
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="portlet-body flip-scroll">
                     <div class="dataTables_wrapper form-inline">
-                    <?php if ($resultObj->num_rows()>0) : ?>
+                    <?php if ($page_list->num_rows()>0) : ?>
                         <table class="table table-striped table-bordered table-hover" id="sample_1">
                             <thead class="flip-content">
                                 <tr>
@@ -90,7 +90,7 @@
                             <tbody>
                                 <?php foreach($resultObj->result() as $item) : ?>
                                 <tr>
-                                    <td><input type="checkbox" class="checkboxes" value="1" ></td>
+                                    <td><input type="checkbox" class="checkboxes" value="1"></td>
                                     <td><?php echo $item->id ?></td>
                                     <td><?php echo $feedBackType[$item->ms_type]; ?></td>
                                     <td><?php echo $item->ms_content ?></td>

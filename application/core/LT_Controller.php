@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once 'CS_Controller.php';
-class MJ_Controller extends CI_Controller
+class LT_Controller extends CI_Controller
 {
     public $uid;
     public $admin_name;

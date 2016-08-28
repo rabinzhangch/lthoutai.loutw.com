@@ -1,5 +1,5 @@
 <?php
-class MJ_Config extends CI_Config 
+class LT_Config extends CI_Config
 {
     public $images_url    = 'http://images.localhost/'; 
     public $skins_url     = 'http://skins.localhost/';  
@@ -52,10 +52,10 @@ class MJ_Config extends CI_Config
      * $dirname 文件夹名称
      * $imageName 图片名称
      */
-    public function show_image_thumb_url($dirname, $imageName = '' ,$resize='360')
+    public function show_image_thumb_url($dirname, $imageName = '', $resize = '360')
     {
         if (!empty($imageName)) {
-            $imageName = $this->get_thumb_image_name($imageName,$resize);
+            $imageName = $this->get_thumb_image_name($imageName, $resize);
             return $this->images_url.$dirname.'/'.$imageName;
         }
         return $this->images_url.$dirname.'/';
@@ -66,7 +66,7 @@ class MJ_Config extends CI_Config
      * @param unknown $imageName
      * @return unknown|string
      */
-    private function get_thumb_image_name($imageName,$resize)
+    private function get_thumb_image_name($imageName, $resize)
     {
         if (strpos($imageName, '/') === false) {
             return $imageName;
