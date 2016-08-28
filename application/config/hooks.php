@@ -18,16 +18,5 @@ $hook['pre_controller'][] = array(
     'params'   => array()
 );
 
-
-/*
-$hook['pre_controller'][] = array(
-    'class'    => 'Login',
-    'function' => 'check_login',
-    'filename' => 'login.php',
-    'filepath' => 'hooks',
-    'params'   => array()
-);
-*/
-
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */
