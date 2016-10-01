@@ -2,8 +2,8 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
-            <h3 class="page-title">用户优惠劵<small> 用户优惠劵</small></h3>
-            <?php echo breadcrumb(array('用户优惠劵', '用户优惠劵', '用户优惠劵添加')); ?>
+            <h3 class="page-title">景区管理<small> 景区列表</small></h3>
+            <?php echo breadcrumb(array('景区管理', '景区产品', '景区产品添加')); ?>
         </div>
     </div>
     <?php echo execute_alert_message() ?>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    <form class="form-horizontal line-form" action="<?php echo base_url('user_coupon_get/addPost') ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal line-form" action="<?php echo base_url('scenic_base/addPost') ?>" method="post" enctype="multipart/form-data">
                         <div class="control-group">
                             <label class="control-label"><em>* </em>优惠劵名称</label>
                             <div class="controls">
@@ -98,7 +98,7 @@
                         </div>
                         <div class="form-actions">
                             <button class="btn green" type="submit"><i class="icon-ok"></i> 保存</button>
-                            <a href="<?php echo base_url('user_coupon_get/grid').'?coupon_set_id='.$this->input->get('coupon_set_id') ?>">
+                            <a href="<?php echo base_url('scenic_base/grid').'?coupon_set_id='.$this->input->get('coupon_set_id') ?>">
                                 <button class="btn" type="button">返回</button>
                             </a>
                         </div>
@@ -110,7 +110,6 @@
 </div>
 <?php $this->load->view('layout/footer');?>
 <?php $this->load->view('supplier/ajaxSupplier/ajaxGet');?>
-<?php $this->load->view('mall_attribute_set/ajaxAttributeSet/ajaxGet');?>
 <?php $this->load->view('user/ajaxUser/ajaxGet');?>
 <script type="text/javascript">
     $(document).ready(function () {

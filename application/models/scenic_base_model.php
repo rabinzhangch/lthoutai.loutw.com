@@ -1,22 +1,22 @@
 <?php
-class User_coupon_get_model extends CI_Model
+class Scenic_base_model extends CI_Model
 {
-    private $table = 'user_coupon_get';
+    private $table = 'scenic_base';
 
-    public function findById($coupon_get_id)
+    public function findById($sid)
     {
-        $this->db->where('coupon_get_id', $coupon_get_id);
+        $this->db->where('sid', $sid);
         return $this->db->get($this->table);
     }
 
     public function total($params=array()) 
     {
         $this->db->from($this->table);
-        if (!empty($params['coupon_set_id'])) {
-            $this->db->where('coupon_set_id', $params['coupon_set_id']);
+        if (!empty($params['sid'])) {
+            $this->db->where('sid', $params['sid']);
         }
-        if (!empty($params['coupon_name'])) {
-            $this->db->where('coupon_name', $params['coupon_name']);
+        if (!empty($params['scenic_name'])) {
+            $this->db->where('scenic_name', $params['scenic_name']);
         }
         if (!empty($params['uid'])) {
             $this->db->where('uid', $params['uid']);
@@ -38,12 +38,12 @@ class User_coupon_get_model extends CI_Model
 			
     public function page_list($page_num, $num, $params=array())
     {
-    	$this->db->from($this->table);
-        if (!empty($params['coupon_set_id'])) {
-            $this->db->where('coupon_set_id', $params['coupon_set_id']);
+        $this->db->from($this->table);
+        if (!empty($params['sid'])) {
+            $this->db->where('sid', $params['sid']);
         }
-        if (!empty($params['coupon_name'])) {
-            $this->db->where('coupon_name', $params['coupon_name']);
+        if (!empty($params['scenic_name'])) {
+            $this->db->where('scenic_name', $params['scenic_name']);
         }
         if (!empty($params['uid'])) {
             $this->db->where('uid', $params['uid']);
@@ -60,7 +60,7 @@ class User_coupon_get_model extends CI_Model
         if (!empty($params['end_time'])) {
             $this->db->where('created_at <=', $params['end_time'].' 23:59:59');
         }
-        $this->db->order_by('coupon_get_id', 'DESC');
+        $this->db->order_by('sid', 'DESC');
         $this->db->limit($page_num, $num);
         return $this->db->get();
     }
@@ -101,11 +101,5 @@ class User_coupon_get_model extends CI_Model
         );
         $this->db->where('coupon_get_id', $postData['coupon_get_id']);
         return $this->db->update($this->table, $data);
-    }
-    
-    public function deleteById($coupon_get_id)
-    {
-        $this->db->where('coupon_get_id', $coupon_get_id);
-        return $this->db->delete($this->table);
     }
 }

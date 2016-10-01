@@ -1,22 +1,22 @@
 <?php
-class User_coupon_get_model extends CI_Model
+class Scenic_theme_model extends CI_Model
 {
-    private $table = 'user_coupon_get';
+    private $table = 'scenic_theme';
 
-    public function findById($coupon_get_id)
+    public function findById($theme_id)
     {
-        $this->db->where('coupon_get_id', $coupon_get_id);
+        $this->db->where('theme_id', $theme_id);
         return $this->db->get($this->table);
     }
 
     public function total($params=array()) 
     {
         $this->db->from($this->table);
-        if (!empty($params['coupon_set_id'])) {
-            $this->db->where('coupon_set_id', $params['coupon_set_id']);
+        if (!empty($params['sid'])) {
+            $this->db->where('sid', $params['sid']);
         }
-        if (!empty($params['coupon_name'])) {
-            $this->db->where('coupon_name', $params['coupon_name']);
+        if (!empty($params['scenic_name'])) {
+            $this->db->where('scenic_name', $params['scenic_name']);
         }
         if (!empty($params['uid'])) {
             $this->db->where('uid', $params['uid']);
@@ -38,12 +38,12 @@ class User_coupon_get_model extends CI_Model
 			
     public function page_list($page_num, $num, $params=array())
     {
-    	$this->db->from($this->table);
-        if (!empty($params['coupon_set_id'])) {
-            $this->db->where('coupon_set_id', $params['coupon_set_id']);
+        $this->db->from($this->table);
+        if (!empty($params['sid'])) {
+            $this->db->where('sid', $params['sid']);
         }
-        if (!empty($params['coupon_name'])) {
-            $this->db->where('coupon_name', $params['coupon_name']);
+        if (!empty($params['scenic_name'])) {
+            $this->db->where('scenic_name', $params['scenic_name']);
         }
         if (!empty($params['uid'])) {
             $this->db->where('uid', $params['uid']);
@@ -101,11 +101,5 @@ class User_coupon_get_model extends CI_Model
         );
         $this->db->where('coupon_get_id', $postData['coupon_get_id']);
         return $this->db->update($this->table, $data);
-    }
-    
-    public function deleteById($coupon_get_id)
-    {
-        $this->db->where('coupon_get_id', $coupon_get_id);
-        return $this->db->delete($this->table);
     }
 }
