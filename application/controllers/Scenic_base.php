@@ -8,6 +8,7 @@ class Scenic_base extends CS_Controller
         $this->load->model('scenic_theme_model', 'scenic_theme');
         $this->load->model('supplier_model', 'supplier');
         $this->load->model('user_model', 'user');
+        $this->load->model('region_model', 'region');
     }
 
     public function grid($pg = 1)
@@ -25,8 +26,8 @@ class Scenic_base extends CS_Controller
         $data['all_rows'] = $config['total_rows'];
         $data['pg_now'] = $pg;
         $data['page_num'] = $page_num;
-        $data['scope'] = array(1 => '自营劵', 2 => '店铺劵');
-        $data['status'] = array(1 => '未使用', 2 => '已使用');
+        $data['starLevel'] = array(1 => '1A', 2 => '2A', 3 => '3A', 4 => '4A', 5 => '5A');
+        $data['updown'] = array(1 => '上架', 2 => '下架');
         $this->load->view('scenic_base/grid', $data);
     }
 }
