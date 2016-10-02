@@ -110,7 +110,6 @@
 </div>
 <?php $this->load->view('layout/footer');?>
 <?php $this->load->view('supplier/ajaxSupplier/ajaxGet');?>
-<?php $this->load->view('user/ajaxUser/ajaxGet');?>
 <script type="text/javascript">
     $(document).ready(function () {
         function autoSelectClass()
