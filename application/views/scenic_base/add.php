@@ -22,7 +22,7 @@
                         <div class="control-group">
                             <label class="control-label"><em>* </em>优惠劵名称</label>
                             <div class="controls">
-                                <input type="hidden" name="coupon_set_id" value="<?php echo $this->input->get('coupon_set_id') ?>">
+                                <input type="hidden" name="sid" value="<?php echo $this->input->get('sid') ?>">
                                 <input type="text" name="coupon_name" class="m-wrap span8 required">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="form-actions">
                             <button class="btn green" type="submit"><i class="icon-ok"></i> 保存</button>
-                            <a href="<?php echo base_url('scenic_base/grid').'?coupon_set_id='.$this->input->get('coupon_set_id') ?>">
+                            <a href="<?php echo base_url('scenic_base/grid').'?sid='.$this->input->get('sid') ?>">
                                 <button class="btn" type="button">返回</button>
                             </a>
                         </div>
