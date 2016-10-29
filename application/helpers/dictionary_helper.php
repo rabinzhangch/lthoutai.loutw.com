@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 只保留字符串首尾字符，隐藏中间用*代替（两个字符时只显示第一个）
  * @param string $user_name 姓名
@@ -100,16 +99,13 @@ function subBankCard($bankCard, $interval = 4, $symbol = '*')
 
     $result = '';
     for ($i=0; $i < $value; $i++) {
-        if ($i == 0)
-        {
+        if ($i == 0) {
             $result .= '****';
-        }
-        else
-        {
-             $result .= ' ****';
+        } else {
+            $result .= ' ****';
         }
     }
-    return ($mod == 0) ? $result : $result. substr($bankCard, -$mod);
+    return ($mod == 0) ? $result : $result.substr($bankCard, -$mod);
 }
 
 /**
