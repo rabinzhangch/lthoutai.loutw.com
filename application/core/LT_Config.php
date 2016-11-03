@@ -1,11 +1,10 @@
 <?php
 class LT_Config extends CI_Config
 {
-    public $images_url    = 'http://images.localhost/'; 
-    public $skins_url     = 'http://skins.localhost/';  
-    public $passport_url  = 'http://passport.localhost/';
-    public $main_base_url = 'http://mj.localhost/';
-    
+    public $main_base_url = 'http://www.loutw.com/';
+    public $images_url    = 'http://images.loutw.com/';
+    public $skins_url     = 'http://skins.loutw.com/';
+    public $passport_url  = 'http://login.loutw.com/';
     
      /**
      * 图片上传路径
@@ -15,9 +14,9 @@ class LT_Config extends CI_Config
     public function upload_image_path($dirname, $imageName = '')
     {
         if (!empty($imageName)) {
-            return dirname(FCPATH).'/images/'.$dirname.'/'.$imageName;
+            return dirname(FCPATH).'/images.loutw.com/'.$dirname.'/'.$imageName;
         }
-        return dirname(FCPATH).'/images/'.$dirname.'/';
+        return dirname(FCPATH).'/images.loutw.com/'.$dirname.'/';
     }
     
     /**
@@ -42,9 +41,9 @@ class LT_Config extends CI_Config
     {
         if (!empty($imageName)) {
             $imageName = $this->get_thumb_image_name($imageName);
-            return dirname(FCPATH).'/images/'.$dirname.'/'.$imageName;
+            return dirname(FCPATH).'/images.loutw.com/'.$dirname.'/'.$imageName;
         }
-        return dirname(FCPATH).'/images/'.$dirname.'/';
+        return dirname(FCPATH).'/images.loutw.com/'.$dirname.'/';
     }
     
     /**
@@ -77,5 +76,4 @@ class LT_Config extends CI_Config
         $imageName = $oldDirData.'/thumb/'.$oldFileData[0].'_'.$resize.'x'.$resize.'.'.$oldFileData[1];
         return $imageName;
     }
-    
 }
