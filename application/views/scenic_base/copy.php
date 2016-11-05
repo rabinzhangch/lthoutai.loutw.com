@@ -99,7 +99,7 @@
                         <div class="control-group ">
                             <label class="control-label"><em>* </em>详细地址</label>
                             <div class="controls">
-                                <input type="text" name="address" value="<?php echo $scenicBase->address ?>" class="m-wrap span8 required">
+                                <input type="text" name="address" value="<?php echo trim(mb_strrchr($scenicBase->address, ' ')) ? trim(mb_strrchr($scenicBase->address, ' ')) : $scenicBase->address; ?>" class="m-wrap span8 required">
                             </div>
                         </div>
                         <div class="control-group">
