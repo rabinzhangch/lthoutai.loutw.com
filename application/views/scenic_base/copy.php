@@ -3,7 +3,7 @@
     <div class="row-fluid">
         <div class="span12">
             <h3 class="page-title">景点管理<small> 景点列表</small></h3>
-            <?php echo breadcrumb(array('景点管理', '景点产品', '景点产品编辑')); ?>
+            <?php echo breadcrumb(array('景点管理', '景点产品', '景点产品复制')); ?>
         </div>
     </div>
     <div class="alert alert-error" style="display:none;">
@@ -25,7 +25,6 @@
                         <div class="control-group">
                             <label class="control-label"><em>* </em>景点名称</label>
                             <div class="controls">
-                                <input type="hidden" name="sid" value="<?php echo $scenicBase->sid ?>">
                                 <input type="text" name="scenic_name" value="<?php echo $scenicBase->scenic_name ?>" class="m-wrap span8 required">
                             </div>
                         </div>

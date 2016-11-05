@@ -2,8 +2,8 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
-            <h3 class="page-title">景区管理<small> 景区列表</small></h3>
-            <?php echo breadcrumb(array('景区管理', '景区产品', '景区产品添加')); ?>
+            <h3 class="page-title">景点管理<small> 景点列表</small></h3>
+            <?php echo breadcrumb(array('景点管理', '景点产品', '景点产品添加')); ?>
         </div>
     </div>
     <?php echo execute_alert_message() ?>
@@ -18,87 +18,124 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    <form class="form-horizontal line-form" action="<?php echo base_url('scenic_base/addPost') ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal scenic-base-form" enctype="multipart/form-data">
                         <div class="control-group">
-                            <label class="control-label"><em>* </em>优惠劵名称</label>
+                            <label class="control-label"><em>* </em>景点名称</label>
                             <div class="controls">
-                                <input type="hidden" name="sid" value="<?php echo $this->input->get('sid') ?>">
-                                <input type="text" name="coupon_name" class="m-wrap span8 required">
+                                <input type="text" name="scenic_name" class="m-wrap span8 required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>景点特色</label>
+                            <div class="controls">
+                                <textarea name="special" rows="3" class="m-wrap span8 required"></textarea>
                             </div>
                         </div>
                         <div class="control-group add-pop-up-html">
-                            <label class="control-label"><em>* </em>用户编号</label>
+                            <label class="control-label"><em>* </em>供 应 商</label>
                             <div class="controls">
-                                <input type="text" name="uid" class="m-wrap span8 useruid required" placeholder="双击选择用户编号">
+                                <input type="text" name="supplier_id" class="m-wrap span8 supplieruid required" readonly="readonly" placeholder="双击选择供应商编号">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label"><em>* </em>优惠劵类型</label>
+                            <label class="control-label"><em>* </em>景点星级</label>
+                            <div class="controls">
+                                <select name="star_level" class="m-wrap span8 required">
+                                    <?php foreach ($starLevel as $key=>$value) : ?>
+                                        <option value="<?php echo $key;?>"><?php echo $value; ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>景点主题</label>
+                            <div class="controls">
+                                <select name="theme_id" class="m-wrap span8 required">
+                                    <?php foreach ($scenicTheme as $theme_id=>$value) : ?>
+                                        <option value="<?php echo $theme_id;?>"><?php echo $value['theme_name']; ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>开放时间</label>
+                            <div class="controls">
+                                <input type="text" name="open_time" class="m-wrap span8 required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>预定须知</label>
+                            <div class="controls">
+                                <textarea name="notice" rows="5" class="m-wrap span12 required"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>景点简介</label>
+                            <div class="controls">
+                                <textarea name="info" rows="5" class="m-wrap span12 required"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">交通指南</label>
+                            <div class="controls">
+                                <textarea name="traffic" rows="5" class="m-wrap span12"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">注意事项</label>
+                            <div class="controls">
+                                <textarea name="attention" rows="5" class="m-wrap span12"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>景区地址</label>
+                            <div class="controls">
+                                <?php $this->load->view('commonhtml/districtSelect'); ?>
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label"><em>* </em>详细地址</label>
+                            <div class="controls">
+                                <input type="text" name="address" class="m-wrap span8 required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>地图类型</label>
                             <div class="controls">
                                 <label class="radio">
-                                    <input type="radio" name="scope" value="1" checked="checked"> 自营劵
+                                    <input type="radio" name="locType" value="1" checked="checked"> 百度地图
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="scope" value="2"> 店铺劵
+                                    <input type="radio" name="locType" value="2"> 高德地图
                                 </label>
                             </div>
                         </div>
-                        <div class="control-group add-pop-up-html">
-                            <label class="control-label"><em>* </em>关联编号</label>
+                        <div class="control-group">
+                            <label class="control-label"><em>* </em>经度</label>
                             <div class="controls">
-                                <input type="text" name="related_id" class="m-wrap span8 required" placeholder="自营劵为商品属性ID，默认0,支持所有自营商品；店铺劵为供应商编号">
+                                <input type="text" name="longitude" class="m-wrap span8 number required">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label"><em>* </em>开始使用时间</label>
+                            <label class="control-label"><em>* </em>纬度</label>
                             <div class="controls">
-                                <div class="input-append date form_datetime">
-                                    <input type="text" name="start_time" size="16" class="m-wrap m-ctrl-medium required">
-                                    <span class="add-on"><i class="icon-calendar"></i></span>
-                                </div>
+                                <input type="text" name="latitude" class="m-wrap span8 number required">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label"><em>* </em>结束使用时间</label>
-                            <div class="controls">
-                                <div class="input-append date form_datetime">
-                                    <input type="text" name="end_time" size="16" class="m-wrap m-ctrl-medium required">
-                                    <span class="add-on"><i class="icon-calendar"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label"><em>* </em>优惠劵金额</label>
-                            <div class="controls">
-                                <input type="text" name="amount" class="m-wrap span8 required" placeholder="请输入可以使用的金额">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">满减条件</label>
-                            <div class="controls">
-                                <input type="text" name="condition" class="m-wrap span8 number required" placeholder="请输入优惠劵使用条件，请填写金额，默认为零不限制">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label"><em>* </em>使用状态</label>
+                            <label class="control-label"><em>* </em>状态</label>
                             <div class="controls">
                                 <label class="radio">
-                                    <input type="radio" name="status" value="1" checked="checked"> 未使用
+                                    <input type="radio" name="updown" value="1" checked="checked"> 上架
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="status" value="2"> 已使用
+                                    <input type="radio" name="updown" value="2"> 下架
                                 </label>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">使用说明</label>
-                            <div class="controls">
-                                <textarea name="note" class="m-wrap span8"  placeholder="请输入优惠劵使用说明"></textarea>
                             </div>
                         </div>
                         <div class="form-actions">
-                            <button class="btn green" type="submit"><i class="icon-ok"></i> 保存</button>
-                            <a href="<?php echo base_url('scenic_base/grid').'?sid='.$this->input->get('sid') ?>">
+                            <button type="submit" class="btn green"><i class="icon-ok"></i> 保存</button>
+                            <a href="<?php echo base_url('scenic_base/grid') ?>">
                                 <button class="btn" type="button">返回</button>
                             </a>
                         </div>
@@ -111,18 +148,34 @@
 <?php $this->load->view('layout/footer');?>
 <?php $this->load->view('supplier/ajaxSupplier/ajaxGet');?>
 <script type="text/javascript">
-    $(document).ready(function () {
-        function autoSelectClass()
-        {
-            if ($('input[name=scope]:checked').val() == 1) {//自营劵
-                $('.add-pop-up-html input[name=related_id]').removeClass('supplieruid').addClass('attributeSet');
-            } else {
-                $('.add-pop-up-html input[name=related_id]').removeClass('attributeSet').addClass('supplieruid');
-            }
+$(document).ready(function(){
+    // 提交验证
+    $('form.scenic-base-form').submit(function () {
+        return false;
+    }).validate({
+        ignore: '',
+        submitHandler: function (f) {
+            $.ajax({
+                type: 'post',
+                async: true,
+                dataType: 'json',
+                url: hostUrl() + '/scenic_base/ajaxValidate',
+                data: $('form.scenic-base-form').serialize(),
+                beforeSend: function () {
+                    $('.form-actions [type=submit]').text('加载中');
+                },
+                success: function (data) {
+                    if (data.status) {
+                        $('.alert-error').hide();
+                        window.location.href = data.messages;
+                    } else {
+                        $('.alert-error').show();
+                        $('.alert-error .remove_2 p').html(data.messages);
+                        $('.footer .go-top').trigger('click');
+                    }
+                }
+            });
         }
-        autoSelectClass();
-        $('input[name=scope]').click(function () {
-            autoSelectClass();
-        });
     });
+});
 </script>
